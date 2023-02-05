@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class Assignment2 {
+public class Assignment2 { 
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
