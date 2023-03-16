@@ -1,14 +1,14 @@
-package org.howard.edu.lsp.assignment4;
+package org.howard.edu.assignment5;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.print.PrintException;
 
-public class IntegerSet {
+public class IntegerSet2 {
 	private List<Integer> set;
 
-	public IntegerSet() {
+	public IntegerSet2() {
 		set = new ArrayList<Integer>();
 	}
 
@@ -20,13 +20,16 @@ public class IntegerSet {
 		return set.size();
 	}
 
-	public boolean equals(IntegerSet b) {
+	public boolean equals(IntegerSet2 b) throws PrintException{
 		if (set.size() != b.length())
 			return false;
 
 		for (int i = 0; i < set.size(); i++) {
 			if (!b.contains(set.get(i)))
 				return false;
+//			else {
+//				throw new PrintException("error");
+//			}
 		}
 
 		return true;
@@ -73,32 +76,41 @@ public class IntegerSet {
 		set.remove(new Integer(item));
 	}
 
-	public void union(IntegerSet intSetb) {
+	public void union(IntegerSet2 intSetb) throws PrintException{
 		for (int i = 0; i < intSetb.length(); i++) {
 			int item = intSetb.set.get(i);
 
 			if (!set.contains(item))
 				set.add(item);
+//			else {
+//				throw new PrintException("error");
+//			}
 		}
 	}
 
-	public void intersect(IntegerSet intSetb) {
+	public void intersect(IntegerSet2 intSetb) throws PrintException{
 		List<Integer> intersection = new ArrayList<Integer>();
 
 		for (int i = 0; i < set.size(); i++) {
 			if (intSetb.contains(set.get(i)))
 				intersection.add(set.get(i));
+//			else {
+//				throw new PrintException("error");
+//			}
 		}
 
 		set = intersection;
 	}
 
-	public void diff(IntegerSet intSetb) {
+	public void diff(IntegerSet2 intSetb) throws IntegerSetException{
 		for (int i = 0; i < intSetb.length(); i++) {
 			int item = intSetb.set.get(i);
 
 			if (set.contains(item))
 				set.remove(new Integer(item));
+			else {
+				throw new IntegerSetException("error");
+			}
 		}
 	}
 
